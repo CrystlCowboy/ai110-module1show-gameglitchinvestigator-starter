@@ -25,8 +25,8 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
+- [ To guess the right number and give you hints along the way ] Describe the game's purpose.
+- [ I found three bugs. After a game over, pressing New Game doesn't clear the red "Game over" message because the `new_game` block in `app.py` resets `attempts` and `secret` but never sets `status` back to `"playing"`, and it also never clears the History list. The hints are also wrong: the messages in `check_guess` are reversed, so a guess that's too high says "Go HIGHER" and a guess that's too low says "Go LOWER". ] Detail which bugs you found.
 - [ ] Explain what fixes you applied.
 
 ## 📸 Demo Walkthrough
@@ -44,9 +44,18 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+python -m pytest tests/test_game_logic.py -k fix -v
+================================================================================================ test session starts =================================================================================================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Justin\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Justin\OneDrive\Desktop\ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.15.1
+collected 5 items / 3 deselected / 2 selected                                                                                                                                                                         
+
+tests/test_game_logic.py::test_new_game_after_game_over_fix PASSED                                                                                                                                              [ 50%]
+tests/test_game_logic.py::test_hints_point_the_right_way_fix PASSED                                                                                                                                             [100%]
+
+========================================================================================== 2 passed, 3 deselected in 1.86s ===========================================================================================
 ```
 
 ## 🚀 Stretch Features

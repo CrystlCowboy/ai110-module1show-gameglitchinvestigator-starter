@@ -35,16 +35,16 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"  # FIX: Tell player to go lower when guess is high using agent mode
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"  # FIX: Tell player to go higher when guess is low using agent mode
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!"  # FIX: Match fallback hint direction using agent mode
+        return "Too Low", "📈 Go HIGHER!"  # FIX: Match fallback hint direction using agent mode
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -134,6 +134,7 @@ with col3:
 if new_game:
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(1, 100)
+    st.session_state.status = "playing"  # FIX: Reset status to "playing" on New Game using agent mode
     st.success("New game started.")
     st.rerun()
 
@@ -155,10 +156,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+        secret = st.session_state.secret  # FIX: Keep secret numeric for hint comparison using agent mode
 
         outcome, message = check_guess(guess_int, secret)
 
