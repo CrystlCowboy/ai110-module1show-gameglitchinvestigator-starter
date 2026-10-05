@@ -50,12 +50,14 @@ I ran pytest using Streamlit's AppTest to check the two bugs I fixed. One test l
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-
+It's kind of like a whiteboard. Each rerun is a new person walking into a room and reading the whiteboard from the top but they know nothing about the last person. The notebook on the table is the only way they know what happened.
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
+  I've never really used test cases or understood how they work too much until this project and this is definetely something I'll use for future projects even outside of this class
 - What is one thing you would do differently next time you work with AI on a coding task?
+  Giving it the right context before (not just files but what's specifically out of scope)
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+  I can't say that this project has changed what I think about AI generated code too much. I think the algorithms it makes are better than any humans and given the context it needs, it can always make better calls than humans. It's not so much AI gets it wrong / hilucinates often but rather it doesn't have enough context so it guesses instead of asks questions which is why I always tell AI to "interview me relentlessly until you understand my goal" then I learn what AI needs as well.

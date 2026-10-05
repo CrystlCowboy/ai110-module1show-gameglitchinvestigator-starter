@@ -27,17 +27,19 @@ It wrote the code, ran away, and now the game is unplayable.
 
 - [ To guess the right number and give you hints along the way ] Describe the game's purpose.
 - [ I found three bugs. After a game over, pressing New Game doesn't clear the red "Game over" message because the `new_game` block in `app.py` resets `attempts` and `secret` but never sets `status` back to `"playing"`, and it also never clears the History list. The hints are also wrong: the messages in `check_guess` are reversed, so a guess that's too high says "Go HIGHER" and a guess that's too low says "Go LOWER". ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [ I fixed two bugs in app.py with Codex's help. The first was New Game after game over. When I lost, the game set status to "lost" and stored it in session state. Pressing New Game reset the attempts and the secret number, but it never set status back to "playing". So when Streamlit reran the app, it saw "lost" was still there and showed the red game over message again. I fixed it by resetting status to "playing" inside the New Game block. The second was the hints. In check_guess, the messages were backwards: a guess that was too high said "Go HIGHER" and a guess that was too low said "Go LOWER". There was also a second problem where the secret number was turned into a string on every other attempt, which made the game compare text instead of numbers, so hints were wrong in a different way. I swapped the messages so they point the right direction and stopped converting the secret to a string, so guesses are always compared as numbers. I left the History not clearing on New Game alone for now, since that is a separate bug. ] Explain what fixes you applied.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Guessed and entered 2 (Says to go HIGHER)
+2. Guessed and entered 20 (Says to go HIGHER)
+3. Guessed and entered 50 (Says to go HIGHER)
+4. Guessed and entered 70 (Says to go LOWER)
+5. Guessed and entered 60 (Says to go LOWER)
+6. Guessed and entered 55 (Says to go HIGHER)
+7. Guessed and entered 57 (I got it correct and had a nice balloon animation)
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
